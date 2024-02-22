@@ -1,0 +1,23 @@
+<div class="grid" style="margin-left: 10px; margin-top: 10px;">
+  <div class="col-md-4">
+    <h1 style="font-weight:normal">Admin Panel</h1><br><br>
+    <!-- <button type="button" pButton label="Dashboard" (click)="navigateTo('/admin/dashboard')" ></button><br> -->
+    <button type="button" pButton label="Staff" (click)="setView('Staff')" class="p-button-success"></button><br><br>
+    <button type="button" pButton label="Orders" (click)="setView('Orders')" class="p-button-success"></button><br><br>
+    <!-- <button type="button" pButton label="Products" (click)="setView('Products')"></button><br> -->
+  </div>
+  &nbsp;
+  <div style="margin-top: 10px;">
+
+    <div *ngIf="viewname === 'Staff'">
+      <app-staff></app-staff>
+    </div>
+    <div *ngIf="viewname === 'Orders'">
+      <app-orders></app-orders>
+    </div>
+    <div *ngIf="viewname === 'Products'">
+      <app-products></app-products>
+    </div>
+    
+  </div>
+</div>

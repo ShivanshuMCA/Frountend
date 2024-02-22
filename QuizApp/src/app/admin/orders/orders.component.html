@@ -1,0 +1,130 @@
+<p-card header="All Orderrs">
+
+<p-table [value]="orders">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Status</th>
+            <th>Delivary Slot</th>
+            <th>UserName</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Actions</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-order>
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order?.date | date }}</td>
+            <td>{{ order?.product }}</td>
+            <td>{{ order?.quantity }}</td>
+            <td *ngIf="order?.status === 'PENDING'">
+                <button
+                    pButton
+                    type="button"
+                    (click)="showEditDialog(order)"
+                    class="p-button-success"
+                >
+                    <span>{{ order?.status }}</span>
+                </button>
+            </td>
+            <td *ngIf="order?.status === 'PROCESS'">
+                <button
+                    pButton
+                    type="button"
+                    (click)="showEditDialog(order)"
+                    class="p-button-warning"
+                >
+                    <span>{{ order?.status }}</span>
+                </button>
+            </td>
+            <td *ngIf="order?.status === 'COMPLETED'">
+                <button
+                    pButton
+                    type="button"
+                    class="p-button-danger"
+                    disabled
+                >
+                    <span>{{ order?.status }}</span>
+                </button>
+            </td>
+            <td>{{ order?.slot }}</td>
+            <td>{{ order?.username }}</td>
+            <td>{{ order?.email }}</td>
+            <td>{{ order?.phone }}</td>
+            <td *ngIf="order?.status === 'PENDING'">
+                <button
+                    pButton
+                    type="button"
+                    icon="pi pi-eye"
+                    (click)="viewStaff(order?.slot)"
+                >
+                    <span>&nbsp;View Avaliable Staff</span>
+                </button>
+            </td>
+            <td *ngIf="order?.status != 'PENDING'" style="text-align: center;">--</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+</p-card>
+<p-dialog
+    header="Order Details"
+    [(visible)]="orderDialogVisible"
+    [focusOnShow]="false"
+>
+    <div class="p-fluid" >
+        <div class="p-field" >
+            <label for="orderStatus">Status</label>
+            <p-dropdown
+                [options]="statuses"
+                [(ngModel)]="selectedOrder.status"
+                placeholder="Select a status"
+            ></p-dropdown>
+        </div>
+    </div>
+    <p-footer>
+        <button
+            pButton
+            type="button"
+            label="Save"
+            (click)="saveOrder()"
+        ></button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog
+    header="Avaliable Staff"
+    [(visible)]="avaliableStaff"
+    [focusOnShow]="false"
+>
+    <div class="p-fluid" >
+        <p-table [value]="avalibStaff">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>S.N.</th>
+                    <th>NAME</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-staff let-rowIndex="rowIndex">
+                <tr>
+                    <td>{{ rowIndex + 1}}</td>
+                    <td>{{ staff?.firstName}}&nbsp;{{ staff?.lastName}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+       
+    </div>
+    <p-footer>
+        <button
+            pButton
+            type="button"
+            label="Close"
+            (click)="closeOrder()"
+            class="p-button-danger"
+        ></button>
+    </p-footer>
+</p-dialog>

@@ -1,0 +1,56 @@
+.new-order-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px; // Limit form width for better readability
+    margin: auto; // Center the form on the page
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); // Soft shadow for depth
+    background-color: #ffffff; // White background
+  
+    h3 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px; // Space below the header
+    }
+  
+    div {
+      margin-bottom: 15px; // Space between form fields
+  
+      label {
+        display: block;
+        margin-bottom: 5px; // Space above each input
+        color: #555; // Darker text for contrast
+        font-weight: bold;
+      }
+  
+      input, .p-dropdown, .p-calendar {
+        width: 100%; // Full width inputs
+        padding: 10px;
+        border: 1px solid #ccc; // Light border for inputs
+        border-radius: 4px; // Rounded corners for inputs
+        box-sizing: border-box; // Border box sizing
+  
+        &:focus {
+          border-color: #007bff; // Highlight color on focus
+          box-shadow: 0 0 0 2px rgba(0,123,255,0.25); // Glow effect on focus
+        }
+      }
+    }
+  
+    button[pButton] {
+      background-color: #007bff; // Bootstrap primary color
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px; // Space above the button
+  
+      &:hover {
+        background-color: #0056b3; // Darker shade on hover
+      }
+    }
+  }
+  

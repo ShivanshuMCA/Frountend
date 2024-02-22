@@ -1,0 +1,15 @@
+/* staff.component.css */
+.staff-container {
+    padding: 20px;
+  }
+  
+:host ::ng-deep{
+  .p-dialog{
+      width: 50% !important;
+      height: 50% !important;
+  }
+  .p-field{
+    padding: 5px;
+  }
+}
+  

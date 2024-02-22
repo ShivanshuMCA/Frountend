@@ -1,0 +1,11 @@
+<!-- admin-sidebar.component.html -->
+<p-sidebar [(visible)]="visible" position="left" styleClass="ui-sidebar-md">
+    <h1 style="font-weight:normal">Admin Panel</h1>
+    <button type="button" pButton label="Dashboard" (click)="navigateTo('/admin/dashboard')" ></button><br>
+    <button type="button" pButton label="Users" (click)="navigateTo('/admin/users')"></button><br>
+    <button type="button" pButton label="Orders" (click)="navigateTo('/admin/orders')"></button><br>
+    <button type="button" pButton label="Products" (click)="navigateTo('/admin/products')"></button><br>
+    <!-- Add more buttons or links for navigation -->
+  </p-sidebar>
+  <button type="button" pButton icon="pi pi-bars" (click)="visible = true"></button>
+  

@@ -1,0 +1,93 @@
+<p-card header="Staff Details">
+    <p-table [value]="staff" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Shift</th>
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-member>
+            <tr>
+                <td>{{ member?.firstName }} {{ member?.lastName }}</td>
+                <td>{{ member?.email }}</td>
+                <td>{{ member?.shift }}</td>
+                <td>
+                    <button
+                        pButton
+                        type="button"
+                        icon="pi pi-pencil"
+                        (click)="showEditDialog(member)"
+                    ></button
+                    >&nbsp;
+                    <button
+                        pButton
+                        type="button"
+                        icon="pi pi-trash"
+                        (click)="confirmDelete(member.id)"
+                    ></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <br /><button
+        pButton
+        type="button"
+        icon="pi pi-plus"
+        title="Add Staff"
+        (click)="addStaff()"
+    ></button>
+</p-card>
+
+<p-dialog
+    header="Staff Details"
+    [(visible)]="displayDialog"
+    [focusOnShow]="false"
+>
+    <div class="p-fluid">
+        <div class="p-field">
+            <label for="firstName">First Name</label>&nbsp;
+            <input
+                type="text"
+                pInputText
+                id="firstName"
+                [(ngModel)]="staffMember.firstName"
+            />
+        </div>
+        <div class="p-field">
+            <label for="lastName">Last Name</label>&nbsp;
+            <input
+                type="text"
+                pInputText
+                id="lastName"
+                [(ngModel)]="staffMember.lastName"
+            />
+        </div>
+        <div class="p-field">
+            <label for="email">Email</label>&nbsp;
+            <input
+                type="text"
+                pInputText
+                id="email"
+                [(ngModel)]="staffMember.email"
+            />
+        </div>
+        <div class="p-field" style="width: 25%;">
+            <label for="shift">Shift</label>
+            <p-dropdown
+                [options]="shifts"
+                [(ngModel)]="staffMember.shift"
+                placeholder="Select a shift"
+                optionLabel="label"
+            ></p-dropdown>
+        </div>
+        <button
+            pButton
+            type="button"
+            label="Save"
+            (click)="saveStaff()"
+        ></button>
+    </div>
+</p-dialog>
